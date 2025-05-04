@@ -6,6 +6,9 @@ import unequip from "./unequip.ts";
 import crafting from "./crafting.ts";
 import equip from "./equip.ts";
 import loopGather from "./loopGather.ts";
+import getMaps from "./getMaps.ts";
 
 
 export { move, rest, fight, gather, unequip, crafting, equip, loopGather};
+
+await getMaps({content_type: 'resource', content_code: 'copper_rocks'});

@@ -5,6 +5,7 @@ import gather from "./gather.ts";
 import unequip from "./unequip.ts";
 import crafting from "./crafting.ts";
 import equip from "./equip.ts";
+import loopGather from "./loopGather.ts";
 
 
-export { move, rest, fight, gather, unequip, crafting, equip};
+export { move, rest, fight, gather, unequip, crafting, equip, loopGather};

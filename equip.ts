@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Equips an item to a specified slot for the given character using the Artifacts MMO API.

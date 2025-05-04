@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Unequips an item from the specified character and slot using the Artifacts MMO API.

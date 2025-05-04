@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Harvests a resource on the character's map using the Artifacts MMO API.
@@ -18,13 +18,9 @@ async function gather(character = "Dexter") {
 
   try {
     const data = await session.postApi(path, body);
-    if (!data) {
-      console.log("Failed to gather resource");
-      return;
-    }
-    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    return error
   }
 }
 

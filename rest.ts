@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Rests your character to recover hit points using the Artifacts MMO API.

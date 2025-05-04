@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Initiates a fight with a target using the Artifacts MMO API.

@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Crafts an item using the specified recipe code for the given character via the Artifacts MMO API.
@@ -13,9 +13,9 @@ import session from "../../utils/session.ts";
  * - Prints the API response or error to the console.
  * @see {@link https://docs.artifactsmmo.com/}
  */
-async function crafting(code: string, character = "Dexter") {
+async function crafting(code: string, quantity = 1, character = "Dexter") {
   const path = `/my/${character}/action/crafting`;
-  const body = { code };
+  const body = { code, quantity };
 
   try {
     const data = await session.postApi(path, body);

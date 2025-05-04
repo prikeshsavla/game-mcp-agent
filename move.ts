@@ -1,4 +1,4 @@
-import session from "../../utils/session.ts";
+import session from "./utils/session.ts";
 
 /**
  * Moves your character to a new map position using the Artifacts MMO API.
@@ -17,7 +17,15 @@ import session from "../../utils/session.ts";
 async function move(x = 0, y = 0, character = "Dexter") {
   const path = `/my/${character}/action/move`;
   const body = { x, y };
-
+  // Handle the case where character is already at destination
+  const currentPosition = await session.getApi(`/my/${character}/position`).catch(() => null);
+  if (currentPosition && currentPosition.x === x && currentPosition.y === y) {
+    return { 
+      success: true, 
+      message: "Character already at destination", 
+      cooldown: { total_seconds: 0 },
+    };
+  }
   try {
     const data = await session.postApi(path, body);
     return data;

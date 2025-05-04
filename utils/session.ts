@@ -26,7 +26,16 @@ class Session {
       const errorMessage = errorResponse.error
         ? `${errorResponse.error.code}: ${errorResponse.error.message}`
         : `${response.status} ${response.statusText}`;
-
+        // Handle specific error codes
+        if (response.status === 422) {
+          throw new Error(`Invalid payload: ${errorMessage}`);
+        } else if (response.status === 429) {
+          throw new Error(`Too many requests: ${errorMessage}`);
+        } else if (response.status === 404) {
+          throw new Error(`Resource not found: ${errorMessage}`);
+        } else if (response.status === 500) {
+          throw new Error(`Server error: ${errorMessage}`);
+        }
       console.error(`API request failed: ${errorMessage}`, url);
       throw new Error(`API request failed: ${errorMessage}`);
     }

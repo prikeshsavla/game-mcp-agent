@@ -1,5 +1,6 @@
 import { z } from "zod";
 import getMaps from "../../getMaps.ts";
+import { MapContentType } from "../../utils/actions/constants.ts";
 
 /**
  * A tool for retrieving information about maps in the Artifacts MMO game world.
@@ -37,23 +38,10 @@ export const getMapsInfoTool = {
     ]).optional().describe("Type of content on the map. Allowed values: 'monster', 'resource', 'workshop', 'bank', 'grand_exchange', 'tasks_master', 'npc'"),
     content_code: z.string().optional().describe("Specific content code to filter maps by")
   },
-  handler: async (args: { content_type?: string; content_code?: string }) => {
+  handler: async (args: { content_type?: MapContentType; content_code?: string }) => {
     try {
-      const { content_type, content_code } = args;
-      
-      // Prepare options for getMaps function
-      const options: { content_type?: string; content_code?: string } = {};
-      
-      if (content_type) {
-        options.content_type = content_type;
-      }
-      
-      if (content_code) {
-        options.content_code = content_code;
-      }
+      const results = await getMaps(args);
 
-      const results = await getMaps(options);
-      
       return {
         content: [
           {

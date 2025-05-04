@@ -1,4 +1,4 @@
-import session from "./utils/session.ts";
+import { handleAction } from "./utils/actions/actionHandler.ts";
 
 /**
  * Harvests a resource on the character's map using the Artifacts MMO API.
@@ -9,19 +9,11 @@ import session from "./utils/session.ts";
  * @remarks
  * - Initiates a gathering action for the specified character.
  * - Sends an empty body as required by the API.
- * - Prints the API response or error to the console.
+ * - Returns the API response or error.
  * @see {@link https://docs.artifactsmmo.com/}
  */
 async function gather(character = "Dexter") {
-  const path = `/my/${character}/action/gathering`;
-  const body = {};
-
-  try {
-    const data = await session.postApi(path, body);
-    return data;
-  } catch (error) {
-    return error
-  }
+  return await handleAction("gathering", character);
 }
 
 export default gather;

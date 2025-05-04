@@ -1,4 +1,4 @@
-import session from "./utils/session.ts";
+import { handleAction } from "./utils/actions/actionHandler.ts";
 
 /**
  * Equips an item to a specified slot for the given character using the Artifacts MMO API.
@@ -15,15 +15,7 @@ import session from "./utils/session.ts";
  * @see {@link https://docs.artifactsmmo.com/}
  */
 async function equip(code: string, slot: string, character = "Dexter") {
-  const path = `/my/${character}/action/equip`;
-  const body = { code, slot };
-
-  try {
-    const data = await session.postApi(path, body);
-    return data;
-  } catch (error) {
-    return { error };
-  }
+  return await handleAction("equip", character, { code, slot });
 }
 
 export default equip;

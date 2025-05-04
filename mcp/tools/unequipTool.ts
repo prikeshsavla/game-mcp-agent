@@ -37,19 +37,11 @@ The tool requires a slot name and accepts an optional character name.",
       
       const result = await unequip(slot, character);
       
-      if (result.error) {
-        throw new Error(`Failed to unequip item: ${JSON.stringify(result.error)}`);
-      }
-      
       return {
         content: [
           {
             type: "text" as const,
-            text: JSON.stringify({
-              success: true,
-              message: `Item unequipped successfully from ${slot}`,
-              details: result
-            }, null, 2)
+            text: JSON.stringify(result, null, 2)
           }
         ]
       };

@@ -1,4 +1,4 @@
-import session from "./utils/session.ts";
+import { handleAction } from "./utils/actions/actionHandler.ts";
 
 /**
  * Unequips an item from the specified character and slot using the Artifacts MMO API.
@@ -14,15 +14,7 @@ import session from "./utils/session.ts";
  * @see {@link https://docs.artifactsmmo.com/}
  */
 async function unequip(slot: string, character = "Dexter") {
-  const path = `/my/${character}/action/unequip`;
-  const body = { slot };
-
-  try {
-    const data = await session.postApi(path, body);
-    return data;
-  } catch (error) {
-    return { error };
-  }
+  return await handleAction("unequip", character, { slot });
 }
 
 export default unequip;

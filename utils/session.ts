@@ -21,10 +21,10 @@ class Session {
       ...(options.headers || {}),
     };
     const response = await fetch(url, options);
+    const { data, error } = await response.json();
     if (response.status < 200 || response.status >= 300) {
-      const errorResponse = await response.json();
-      const errorMessage = errorResponse.error
-        ? `${errorResponse.error.code}: ${errorResponse.error.message}`
+      const errorMessage = error
+        ? `${error.code}: ${error.message}`
         : `${response.status} ${response.statusText}`;
         // Handle specific error codes
         if (response.status === 422) {
@@ -37,9 +37,9 @@ class Session {
           throw new Error(`Server error: ${errorMessage}`);
         }
       console.error(`API request failed: ${errorMessage}`, url);
-      throw new Error(`API request failed: ${errorMessage}`);
+      return error
     }
-    const { data } = await response.json();
+    
     return data;
   }
 

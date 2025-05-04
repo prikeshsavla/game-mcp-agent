@@ -35,19 +35,11 @@ The tool accepts an optional character name.",
       
       const result = await gather(character);
       
-      if (result.error) {
-        throw new Error(`Failed to gather resources: ${JSON.stringify(result.error)}`);
-      }
-      
       return {
         content: [
           {
             type: "text" as const,
-            text: JSON.stringify({
-              success: true,
-              message: "Resource gathered successfully",
-              details: result
-            }, null, 2)
+            text: JSON.stringify(result, null, 2)
           }
         ]
       };

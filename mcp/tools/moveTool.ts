@@ -39,20 +39,12 @@ The tool accepts X and Y coordinates and an optional character name.",
     try {
       const { x, y, character } = args;
       
-      const result = await move(x, y, character);
-      
-
-      
+      const result = await move(x, y, character);      
       return {
         content: [
           {
             type: "text" as const,
-            text: JSON.stringify({
-              success: result.success,
-              message: result.message || "Character moved successfully",
-              cooldown: result.cooldown,
-              destination: { x, y }
-            }, null, 2)
+            text: JSON.stringify(result, null, 2)
           }
         ]
       };

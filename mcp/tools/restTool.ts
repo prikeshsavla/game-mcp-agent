@@ -34,21 +34,12 @@ The tool accepts an optional character name.",
       const { character } = args;
       
       const result = await rest(character);
-      
-      if (result.error) {
-        throw new Error(`Failed to rest character: ${JSON.stringify(result.error)}`);
-      }
-      
+
       return {
         content: [
           {
             type: "text" as const,
-            text: JSON.stringify({
-              success: true,
-              message: "Character is resting",
-              cooldown: result.cooldown,
-              details: result
-            }, null, 2)
+            text: JSON.stringify(result, null, 2)
           }
         ]
       };

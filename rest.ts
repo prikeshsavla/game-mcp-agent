@@ -1,4 +1,4 @@
-import session from "./utils/session.ts";
+import { handleAction } from "./utils/actions/actionHandler.ts";
 
 /**
  * Rests your character to recover hit points using the Artifacts MMO API.
@@ -13,15 +13,7 @@ import session from "./utils/session.ts";
  * @see {@link https://docs.artifactsmmo.com/}
  */
 async function rest(character = "Dexter") {
-  const path = `/my/${character}/action/rest`;
-  const body = {};
-
-  try {
-    const data = await session.postApi(path, body);
-    return data;
-  } catch (error) {
-    return { error };
-  }
+  return await handleAction("rest", character);
 }
 
 export default rest;

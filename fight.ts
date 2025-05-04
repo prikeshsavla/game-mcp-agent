@@ -1,4 +1,4 @@
-import session from "./utils/session.ts";
+import { handleAction } from "./utils/actions/actionHandler.ts";
 
 /**
  * Initiates a fight with a target using the Artifacts MMO API.
@@ -9,23 +9,11 @@ import session from "./utils/session.ts";
  * @remarks
  * - Initiates combat with the specified target.
  * - Sends the target in the request body as required by the API.
- * - Prints the API response or error to the console.
+ * - Returns the API response or error.
  * @see {@link https://docs.artifactsmmo.com/}
  */
 async function fight(character = "Dexter") {
-  const path = `/my/${character}/action/fight`;
-  const body = { };
-
-  try {
-    const data = await session.postApi(path, body);
-    if (!data) {
-      console.log("Failed to initiate fight");
-      return;
-    }
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
+  return await handleAction("fight", character);
 }
 
 export default fight;

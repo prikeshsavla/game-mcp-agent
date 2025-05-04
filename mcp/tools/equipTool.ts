@@ -38,20 +38,12 @@ The tool requires the item code, slot name, and accepts an optional character na
       const { code, slot, character } = args;
       
       const result = await equip(code, slot, character);
-      
-      if (result.error) {
-        throw new Error(`Failed to equip item: ${JSON.stringify(result.error)}`);
-      }
-      
+   
       return {
         content: [
           {
             type: "text" as const,
-            text: JSON.stringify({
-              success: true,
-              message: `Item ${code} equipped successfully to ${slot}`,
-              details: result
-            }, null, 2)
+             text: JSON.stringify(result, null, 2)
           }
         ]
       };

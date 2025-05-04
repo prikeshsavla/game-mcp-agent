@@ -1,4 +1,4 @@
-import crafting from "../crafting.ts";
+import crafting from "../craft.ts";
 import loopGather from "../loopGather.ts";
 import move from "../move.ts";
 

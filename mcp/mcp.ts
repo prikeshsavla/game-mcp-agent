@@ -10,12 +10,20 @@ import { craftingTool } from "./tools/craftingTool.ts";
 import { equipTool } from "./tools/equipTool.ts";
 import { loopGatherTool } from "./tools/loopGatherTool.ts";
 import { getMapsInfoTool } from "./tools/getMapsInfoTool.ts";
+import { useItemTool } from "./tools/useItemTool.ts";
+import { getCharacterTool } from "./tools/getCharacterTool.ts";
+import { getBankItemsTool } from "./tools/getBankItemsTool.ts";
+import { bankDepositTool } from "./tools/bankDepositTool.ts";
+import { bankWithdrawTool } from "./tools/bankWithdrawTool.ts";
+import { getCharacterLogsTool } from "./tools/getCharacterLogsTool.ts";
+import { bankDepositGoldTool } from "./tools/bankDepositGoldTool.ts";
+import { bankWithdrawGoldTool } from "./tools/bankWithdrawGoldTool.ts";
 
 // Create an MCP server
 const server = new McpServer({
-  name: "Atlassian MCP Server",
+  name: "Artifacts MMO MCP Server",
   version: "1.0.0",
-  description: "Model Context Protocol server for Atlassian services (Jira and Confluence)",
+  description: "Model Context Protocol server for Artifacts MMO game actions and information",
   vendor: "Custom"
 });
 // Define all tools in an array
@@ -28,6 +36,15 @@ const tools = [
   craftingTool,
   equipTool,
   loopGatherTool,
+  useItemTool,
+  getCharacterTool,
+  getBankItemsTool,
+  bankDepositTool,
+  bankWithdrawTool,
+  getCharacterLogsTool,
+  bankDepositGoldTool,
+  bankWithdrawGoldTool,
+  getMapsInfoTool
 ];
 
 // Register all tools using a loop
@@ -40,16 +57,10 @@ for (const tool of tools) {
   );
 }
 
-server.tool(
-  getMapsInfoTool.name,
-  getMapsInfoTool.description,
-  getMapsInfoTool.schema,
-  getMapsInfoTool.handler
-);
 
 
 // Start the MCP server with StdioServerTransport
-// console.log("Starting Atlassian MCP Server (stdio)...");
+// console.log("Starting Artifacts MMO MCP Server (stdio)...");
 const transport = new StdioServerTransport();
 server.connect(transport).catch(error => {
   console.error("Error connecting MCP server:", error);

@@ -1,4 +1,4 @@
-import { handleAction } from "./utils/actions/actionHandler.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Unequips an item from the specified character and slot using the Artifacts MMO API.

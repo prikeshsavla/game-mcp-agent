@@ -1,6 +1,6 @@
 import { z } from "zod";
-import equip from "../../equip.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import equip from "../../actions/equip.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for equipping items on a character in the Artifacts MMO game world.

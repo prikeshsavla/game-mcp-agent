@@ -1,5 +1,5 @@
-import gather from "../../gather.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import gather from "../../actions/gather.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for harvesting resources in the Artifacts MMO game world.

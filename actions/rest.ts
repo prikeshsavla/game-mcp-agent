@@ -1,4 +1,4 @@
-import { handleAction } from "./utils/actions/actionHandler.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Rests your character to recover hit points using the Artifacts MMO API.

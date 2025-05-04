@@ -1,5 +1,5 @@
-import fight from "../../fight.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import fight from "../../actions/fight.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for initiating combat with a target in the Artifacts MMO game world.

@@ -1,4 +1,4 @@
-import { handleAction } from "./utils/actions/actionHandler.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Harvests a resource on the character's map using the Artifacts MMO API.

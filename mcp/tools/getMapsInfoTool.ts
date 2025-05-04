@@ -1,7 +1,6 @@
 import { z } from "zod";
-import getMaps from "../../getMaps.ts";
-import { MapContentType } from "../../utils/actions/constants.ts";
-import { createTool } from "./utils.ts";
+import getMaps from "../../actions/getMaps.ts";
+import { createTool } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for retrieving information about maps in the Artifacts MMO game world.

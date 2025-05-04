@@ -1,4 +1,4 @@
-import { handleAction } from "./utils/actions/actionHandler.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Initiates a fight with a target using the Artifacts MMO API.

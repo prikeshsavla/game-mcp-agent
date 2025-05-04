@@ -1,6 +1,6 @@
 import { z } from "zod";
-import unequip from "../../unequip.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import unequip from "../../actions/unequip.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for unequipping items from a character in the Artifacts MMO game world.

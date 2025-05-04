@@ -1,4 +1,4 @@
-import { handleAction } from "./utils/actions/actionHandler.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Equips an item to a specified slot for the given character using the Artifacts MMO API.

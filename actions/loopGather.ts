@@ -1,5 +1,5 @@
 import gather from "./gather.ts";
-import chainMethods from "./utils/chainMethods.ts";
+import chainMethods from "../utils/chainMethods.ts";
 
 /**
  * Loops gather calls for a character using chainMethods.

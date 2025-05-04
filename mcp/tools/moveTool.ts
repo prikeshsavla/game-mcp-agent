@@ -1,6 +1,6 @@
 import { z } from "zod";
-import move from "../../move.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import move from "../../actions/move.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for moving a character in the Artifacts MMO game world.

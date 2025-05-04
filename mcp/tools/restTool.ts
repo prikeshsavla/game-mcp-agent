@@ -1,5 +1,5 @@
-import rest from "../../rest.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import rest from "../../actions/rest.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for resting a character in the Artifacts MMO game world.

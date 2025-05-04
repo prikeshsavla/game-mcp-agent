@@ -21,26 +21,13 @@ class Session {
       ...(options.headers || {}),
     };
     const response = await fetch(url, options);
-    const { data, error } = await response.json();
+    const result = await response.json();
     if (response.status < 200 || response.status >= 300) {
-      const errorMessage = error
-        ? `${error.code}: ${error.message}`
-        : `${response.status} ${response.statusText}`;
-        // Handle specific error codes
-        if (response.status === 422) {
-          throw new Error(`Invalid payload: ${errorMessage}`);
-        } else if (response.status === 429) {
-          throw new Error(`Too many requests: ${errorMessage}`);
-        } else if (response.status === 404) {
-          throw new Error(`Resource not found: ${errorMessage}`);
-        } else if (response.status === 500) {
-          throw new Error(`Server error: ${errorMessage}`);
-        }
-      console.error(`API request failed: ${errorMessage}`, url);
-      return error
+      
+      return result
     }
     
-    return data;
+    return result.data;
   }
 
   async postApi(path: string, body: object) {

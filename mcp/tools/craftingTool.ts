@@ -1,6 +1,6 @@
 import { z } from "zod";
-import craft from "../../craft.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import craft from "../../actions/craft.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for crafting items in the Artifacts MMO game world.

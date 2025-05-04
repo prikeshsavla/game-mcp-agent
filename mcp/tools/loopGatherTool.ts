@@ -1,6 +1,6 @@
 import { z } from "zod";
-import loopGather from "../../loopGather.ts";
-import { createTool, commonSchemaParams } from "./utils.ts";
+import loopGather from "../../actions/loopGather.ts";
+import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for performing sequential gathering operations in the Artifacts MMO game world.

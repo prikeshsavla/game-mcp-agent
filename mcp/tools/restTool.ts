@@ -1,5 +1,5 @@
-import { z } from "zod";
 import rest from "../../rest.ts";
+import { createTool, commonSchemaParams } from "./utils.ts";
 
 /**
  * A tool for resting a character in the Artifacts MMO game world.
@@ -21,31 +21,15 @@ import rest from "../../rest.ts";
  * 
  * @throws Error if the rest action fails or returns an error response
  */
-export const restCharacterTool = {
-  name: "rest_character",
-  description: "Makes a character rest to recover hit points in the game. \
+export const restCharacterTool = createTool(
+  "rest_character",
+  "Makes a character rest to recover hit points in the game. \
 Use this tool when a character needs to heal. \
 The tool accepts an optional character name.",
-  schema: {
-    character: z.string().default("Dexter").describe("The name of the character to rest (default: Dexter)")
+  {
+    character: commonSchemaParams.character
   },
-  handler: async (args: { character: string }) => {
-    try {
-      const { character } = args;
-      
-      const result = await rest(character);
-
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify(result, null, 2)
-          }
-        ]
-      };
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred during rest';
-      throw new Error(errorMessage);
-    }
+  async ({ character }) => {
+    return await rest(character);
   }
-};
+);

@@ -1,7 +1,3 @@
-import crafting from "../craft.ts";
-import loopGather from "../loopGather.ts";
-import move from "../move.ts";
-
 type MethodCall = {
   description: string;
   // deno-lint-ignore no-explicit-any

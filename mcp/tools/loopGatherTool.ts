@@ -1,5 +1,6 @@
 import { z } from "zod";
 import loopGather from "../../loopGather.ts";
+import { createTool, commonSchemaParams } from "./utils.ts";
 
 /**
  * A tool for performing sequential gathering operations in the Artifacts MMO game world.
@@ -22,36 +23,16 @@ import loopGather from "../../loopGather.ts";
  * 
  * @throws Error if the loop gathering action fails or returns an error response
  */
-export const loopGatherTool = {
-  name: "loop_gather",
-  description: "Performs multiple gathering operations in sequence. \
+export const loopGatherTool = createTool(
+  "loop_gather",
+  "Performs multiple gathering operations in sequence. \
 Use this tool when you want a character to gather resources multiple times. \
 The tool requires the number of times to gather and accepts an optional character name.",
-  schema: {
+  {
     times: z.number().min(1).describe("Number of times to perform gathering operations"),
-    character: z.string().default("Dexter").describe("The name of the character to gather with (default: Dexter)")
+    character: commonSchemaParams.character
   },
-  handler: async (args: { times: number; character: string }) => {
-    try {
-      const { times, character } = args;
-      
-      const results = await loopGather(times, character);
-      
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify({
-              success: true,
-              message: `Completed ${times} gathering operations`,
-              details: results
-            }, null, 2)
-          }
-        ]
-      };
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred during loop gathering';
-      throw new Error(errorMessage);
-    }
+  async ({ times, character }) => {
+    return await loopGather(times, character);
   }
-};
+);

@@ -1,5 +1,5 @@
-import { z } from "zod";
 import gather from "../../gather.ts";
+import { createTool, commonSchemaParams } from "./utils.ts";
 
 /**
  * A tool for harvesting resources in the Artifacts MMO game world.
@@ -21,31 +21,15 @@ import gather from "../../gather.ts";
  * 
  * @throws Error if the gathering action fails or returns an error response
  */
-export const gatherTool = {
-  name: "gather_resource",
-  description: "Harvests a resource on the character's current map location. \
+export const gatherTool = createTool(
+  "gather_resource",
+  "Harvests a resource on the character's current map location. \
 Use this tool when you want a character to gather resources at their current position. \
 The tool accepts an optional character name.",
-  schema: {
-    character: z.string().default("Dexter").describe("The name of the character to gather with (default: Dexter)")
+  {
+    character: commonSchemaParams.character
   },
-  handler: async (args: { character: string }) => {
-    try {
-      const { character } = args;
-      
-      const result = await gather(character);
-      
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify(result, null, 2)
-          }
-        ]
-      };
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred during gathering';
-      throw new Error(errorMessage);
-    }
+  async ({ character }) => {
+    return await gather(character);
   }
-};
+);

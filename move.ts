@@ -1,6 +1,4 @@
-import session from "./utils/session.ts";
 import { handleAction } from "./utils/actions/actionHandler.ts";
-import { API_ENDPOINTS } from "./utils/actions/constants.ts";
 
 /**
  * Moves your character to a new map position using the Artifacts MMO API.
@@ -16,17 +14,7 @@ import { API_ENDPOINTS } from "./utils/actions/constants.ts";
  * - Returns the API response or error.
  * @see {@link https://docs.artifactsmmo.com/}
  */
-async function move(x = 0, y = 0, character = "Dexter") {
-  // // Handle the case where character is already at destination
-  // const currentPosition = await session.getApi(API_ENDPOINTS.POSITION(character)).catch(() => null);
-  // if (currentPosition && currentPosition.x === x && currentPosition.y === y) {
-  //   return { 
-  //     success: true, 
-  //     message: "Character already at destination", 
-  //     cooldown: { total_seconds: 0 },
-  //   };
-  // }
-  
+async function move(x = 0, y = 0, character = "Dexter") {  
   return await handleAction("move", character, { x, y });
 }
 

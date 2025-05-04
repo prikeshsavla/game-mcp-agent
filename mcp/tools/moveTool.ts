@@ -1,5 +1,6 @@
 import { z } from "zod";
 import move from "../../move.ts";
+import { createTool, commonSchemaParams } from "./utils.ts";
 
 /**
  * A tool for moving a character in the Artifacts MMO game world.
@@ -25,32 +26,17 @@ import move from "../../move.ts";
  * 
  * @throws Error if the movement action fails or returns an error response
  */
-export const moveCharacterTool = {
-  name: "move_character",
-  description: "Moves a character to specified X and Y coordinates on the game map. \
+export const moveCharacterTool = createTool(
+  "move_character",
+  "Moves a character to specified X and Y coordinates on the game map. \
 Use this tool when you need to navigate a character to a new position in the game world. \
 The tool accepts X and Y coordinates and an optional character name.",
-  schema: {
+  {
     x: z.number().describe("The X coordinate to move to"),
     y: z.number().describe("The Y coordinate to move to"),
-    character: z.string().default("Dexter").describe("The name of the character to move (default: Dexter)")
+    character: commonSchemaParams.character
   },
-  handler: async (args: { x: number; y: number; character: string }) => {
-    try {
-      const { x, y, character } = args;
-      
-      const result = await move(x, y, character);      
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: JSON.stringify(result, null, 2)
-          }
-        ]
-      };
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred during movement';
-      throw new Error(errorMessage);
-    }
+  async ({ x, y, character }) => {
+    return await move(x, y, character);
   }
-};
+);

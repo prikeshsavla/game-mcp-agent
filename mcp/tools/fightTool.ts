@@ -1,5 +1,5 @@
-import { z } from "zod";
 import fight from "../../fight.ts";
+import { createTool, commonSchemaParams } from "./utils.ts";
 
 /**
  * A tool for initiating combat with a target in the Artifacts MMO game world.
@@ -21,28 +21,15 @@ import fight from "../../fight.ts";
  *
  * @throws Error if the fight action fails or returns an error response
  */
-export const fightTool = {
-  name: "fight",
-  description: "Initiates combat for the character in the game. \
+export const fightTool = createTool(
+  "fight",
+  "Initiates combat for the character in the game. \
 Use this tool when a character needs to fight nearby enemies. \
 The tool accepts an optional character name.",
-  schema: {
-    character: z.string().default("Dexter").describe(
-      "The name of the character who will fight (default: Dexter)",
-    ),
+  {
+    character: commonSchemaParams.character,
   },
-  handler: async (args: { character: string }) => {
-    const { character } = args;
-
-    const result = await fight(character);
-
-    return {
-      content: [
-        {
-          type: "text" as const,
-            text: JSON.stringify(result, null, 2)
-        },
-      ],
-    };
-  },
-};
+  async ({ character }) => {
+    return await fight(character);
+  }
+);

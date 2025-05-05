@@ -57,8 +57,6 @@ for (const tool of tools) {
   );
 }
 
-
-
 // Start the MCP server with StdioServerTransport
 // console.log("Starting Artifacts MMO MCP Server (stdio)...");
 const transport = new StdioServerTransport();

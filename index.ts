@@ -6,9 +6,9 @@ import unequip from "./actions/unequip.ts";
 import craft from "./actions/craft.ts";
 import equip from "./actions/equip.ts";
 import loopGather from "./actions/loopGather.ts";
-import getMaps from "./actions/async/getMaps.ts";
+import getMaps from "./actions/info/getMaps.ts";
 import chainMethods from "./utils/chainMethods.ts";
-import getCharacter from "./actions/async/getCharacter.ts";
+import getCharacter from "./actions/info/getCharacter.ts";
 import useItem from "./actions/useItem.ts";
 
 

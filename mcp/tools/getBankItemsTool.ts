@@ -1,4 +1,4 @@
-import getBankItems from "../../actions/async/getBankItems.ts";
+import getBankItems from "../../actions/info/getBankItems.ts";
 import { createTool } from "../../utils/toolUtils.ts";
 
 /**

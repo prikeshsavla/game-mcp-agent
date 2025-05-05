@@ -1,4 +1,4 @@
-import getCharacterLogs from "../../actions/async/getCharacterLogs.ts";
+import getCharacterLogs from "../../actions/info/getCharacterLogs.ts";
 import { createTool } from "../../utils/toolUtils.ts";
 
 /**

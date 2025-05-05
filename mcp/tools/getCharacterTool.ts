@@ -1,5 +1,5 @@
 import { z } from "zod";
-import getCharacter from "../../actions/getCharacter.ts";
+import getCharacter from "../../actions/async/getCharacter.ts";
 import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
 
 /**

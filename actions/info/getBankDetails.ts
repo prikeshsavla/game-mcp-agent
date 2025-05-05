@@ -1,4 +1,4 @@
-import session from "../utils/session.ts";
+import session from "../../utils/session.ts";
 
 /**
  * Retrieves details about the account's bank, including gold and storage slots.

@@ -1,4 +1,4 @@
-import session from "../utils/session.ts";
+import session from "../../utils/session.ts";
 
 /**
  * Retrieves a list of all characters associated with the authenticated account.

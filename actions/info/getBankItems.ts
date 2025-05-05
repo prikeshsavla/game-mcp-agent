@@ -1,4 +1,4 @@
-import session from "../utils/session.ts";
+import session from "../../utils/session.ts";
 
 /**
  * Retrieves all items stored in the account's bank.

@@ -15,14 +15,14 @@ function sleep(ms: number) {
 async function chainMethods(calls: MethodCall[]) {
   for (let i = 0; i < calls.length; i++) {
     const { description, method } = calls[i];
-    console.log(`Calling #${i + 1}: ${description}`);
+    console.log(`Calling #${i + 1}/${calls.length}: ${description}`);
     const result = await method();
     console.log("Result:", result);
 
     const waitSeconds = result?.cooldown?.total_seconds ?? 0;
     if (i < calls.length - 1) {
       console.log(
-        `Next method will be called in ${waitSeconds} seconds.`,
+        `Next method ( #${i + 2}/${calls.length}) will be called in ${waitSeconds} seconds.`,
       );
       if (waitSeconds > 0) {
         await sleep(waitSeconds * 1000);

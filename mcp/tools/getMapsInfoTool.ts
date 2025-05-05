@@ -1,5 +1,5 @@
 import { z } from "zod";
-import getMaps from "../../actions/getMaps.ts";
+import getMaps from "../../actions/async/getMaps.ts";
 import { createTool } from "../../utils/toolUtils.ts";
 
 /**

@@ -1,5 +1,4 @@
-import { log } from "node:console";
-import session from "../utils/session.ts";
+import session from "../../utils/session.ts";
 
 /**
  * Retrieves detailed information about a character by name.

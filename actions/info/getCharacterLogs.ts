@@ -1,4 +1,4 @@
-import session from "../utils/session.ts";
+import session from "../../utils/session.ts";
 
 /**
  * Retrieves the action logs history for all characters on the account.

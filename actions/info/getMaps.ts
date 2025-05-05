@@ -1,5 +1,5 @@
-import session from "../utils/session.ts";
-import { API_ENDPOINTS, VALID_MAP_CONTENT_TYPES, MapContentType } from "../utils/actions/constants.ts";
+import session from "../../utils/session.ts";
+import { API_ENDPOINTS, VALID_MAP_CONTENT_TYPES, MapContentType } from "../../utils/actions/constants.ts";
 
 /**
  * Fetches all map entries from the Artifacts MMO API.

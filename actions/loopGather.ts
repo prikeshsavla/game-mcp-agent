@@ -1,5 +1,5 @@
-import gather from "./gather.ts";
 import chainMethods from "../utils/chainMethods.ts";
+import { handleAction } from "../utils/actions/actionHandler.ts";
 
 /**
  * Loops gather calls for a character using chainMethods.
@@ -15,10 +15,10 @@ import chainMethods from "../utils/chainMethods.ts";
  * - Each gathering operation is executed after the previous one completes.
  * - Returns all results in an array when all operations are complete.
  */
-async function loopGather(times: number, character: string = "Dexter") {
+async function loopGather(times: number, action: string = "gathering", character: string = "Dexter") {
   const calls = Array.from({ length: times }, (_, i) => ({
-    description: `Gather call #${i + 1} for ${character}`,
-    method: () => gather(character),
+    description: `${action} call #${i + 1}/${times} for ${character}`,
+    method: () => handleAction(action, character),
   }));
 
   return await chainMethods(calls);

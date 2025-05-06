@@ -22,11 +22,11 @@ class Session {
     };
     const response = await fetch(url, options);
     const result = await response.json();
+    console.log("Response:", result);
     if (response.status < 200 || response.status >= 300) {
-      
-      return result
+      return result;
     }
-    
+
     return result.data;
   }
 

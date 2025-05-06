@@ -8,7 +8,7 @@ import { gatherTool } from "./tools/gatherTool.ts";
 import { unequipTool } from "./tools/unequipTool.ts";
 import { craftingTool } from "./tools/craftingTool.ts";
 import { equipTool } from "./tools/equipTool.ts";
-import { loopGatherTool } from "./tools/loopGatherTool.ts";
+import { loopActionTool } from "./tools/loopActionTool.ts";
 import { getMapsInfoTool } from "./tools/getMapsInfoTool.ts";
 import { useItemTool } from "./tools/useItemTool.ts";
 import { getCharacterTool } from "./tools/getCharacterTool.ts";
@@ -23,8 +23,9 @@ import { bankWithdrawGoldTool } from "./tools/bankWithdrawGoldTool.ts";
 const server = new McpServer({
   name: "Artifacts MMO MCP Server",
   version: "1.0.0",
-  description: "Model Context Protocol server for Artifacts MMO game actions and information",
-  vendor: "Custom"
+  description:
+    "Model Context Protocol server for Artifacts MMO game actions and information",
+  vendor: "Custom",
 });
 // Define all tools in an array
 const tools = [
@@ -35,7 +36,7 @@ const tools = [
   unequipTool,
   craftingTool,
   equipTool,
-  loopGatherTool,
+  loopActionTool,
   useItemTool,
   getCharacterTool,
   getBankItemsTool,
@@ -44,7 +45,7 @@ const tools = [
   getCharacterLogsTool,
   bankDepositGoldTool,
   bankWithdrawGoldTool,
-  getMapsInfoTool
+  getMapsInfoTool,
 ];
 
 // Register all tools using a loop
@@ -53,14 +54,14 @@ for (const tool of tools) {
     tool.name,
     tool.description,
     tool.schema,
-    tool.handler
+    tool.handler,
   );
 }
 
 // Start the MCP server with StdioServerTransport
 // console.log("Starting Artifacts MMO MCP Server (stdio)...");
 const transport = new StdioServerTransport();
-server.connect(transport).catch(error => {
+server.connect(transport).catch((error) => {
   console.error("Error connecting MCP server:", error);
   process.exit(1);
 });

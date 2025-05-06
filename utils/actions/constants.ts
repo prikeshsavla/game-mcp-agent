@@ -5,7 +5,7 @@
 /**
  * Base action path creator
  */
-export const createActionPath = (character: string, action: string): string => 
+export const createActionPath = (character: string, action: string): string =>
   `/my/${character}/action/${action}`;
 
 /**
@@ -27,13 +27,13 @@ export const API_ENDPOINTS = {
  * Valid content types for map filtering
  */
 export const VALID_MAP_CONTENT_TYPES = [
-  'monster', 
-  'resource', 
-  'workshop', 
-  'bank', 
-  'grand_exchange', 
-  'tasks_master', 
-  'npc'
+  "monster",
+  "resource",
+  "workshop",
+  "bank",
+  "grand_exchange",
+  "tasks_master",
+  "npc",
 ] as const;
 
 export type MapContentType = typeof VALID_MAP_CONTENT_TYPES[number];

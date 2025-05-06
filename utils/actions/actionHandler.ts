@@ -2,7 +2,7 @@ import session from "../session.ts";
 
 /**
  * Generic action handler for common API actions in Artifacts MMO
- * 
+ *
  * @param action - The action type (move, rest, fight, etc)
  * @param character - The character name to perform the action with
  * @param payload - The action-specific payload data
@@ -11,7 +11,7 @@ import session from "../session.ts";
 export async function handleAction<T = unknown>(
   action: string,
   character = "Dexter",
-  payload: Record<string, unknown> = {}
+  payload: Record<string, unknown> = {},
 ): Promise<T | { error: unknown }> {
   const path = `/my/${character}/action/${action}`;
 
@@ -26,13 +26,13 @@ export async function handleAction<T = unknown>(
 /**
  * Action types supported by the API
  */
-export type ActionType = 
+export type ActionType =
   | "move"
-  | "rest" 
-  | "fight" 
-  | "gathering" 
-  | "equip" 
-  | "unequip" 
+  | "rest"
+  | "fight"
+  | "gathering"
+  | "equip"
+  | "unequip"
   | "crafting";
 
 /**

@@ -10,9 +10,9 @@ export function formatToolResponse(result: any) {
     content: [
       {
         type: "text" as const,
-        text: JSON.stringify(result, null, 2)
-      }
-    ]
+        text: JSON.stringify(result, null, 2),
+      },
+    ],
   };
 }
 
@@ -28,7 +28,7 @@ export function createTool<T extends Record<string, z.ZodType>, R>(
   name: string,
   description: string,
   schema: T,
-  handler: (args: z.infer<z.ZodObject<T>>) => Promise<R>
+  handler: (args: z.infer<z.ZodObject<T>>) => Promise<R>,
 ) {
   return {
     name,
@@ -37,7 +37,7 @@ export function createTool<T extends Record<string, z.ZodType>, R>(
     handler: async (args: z.infer<z.ZodObject<T>>) => {
       const result = await handler(args);
       return formatToolResponse(result);
-    }
+    },
   };
 }
 
@@ -45,5 +45,7 @@ export function createTool<T extends Record<string, z.ZodType>, R>(
  * Common schema parameters used across multiple tools
  */
 export const commonSchemaParams = {
-  character: z.string().default("Dexter").describe("The name of the character (default: Dexter)")
+  character: z.string().default("Dexter").describe(
+    "The name of the character (default: Dexter)",
+  ),
 };

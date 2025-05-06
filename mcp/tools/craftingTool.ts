@@ -1,6 +1,6 @@
 import { z } from "zod";
 import craft from "../../actions/craft.ts";
-import { createTool, commonSchemaParams } from "../../utils/toolUtils.ts";
+import { commonSchemaParams, createTool } from "../../utils/toolUtils.ts";
 
 /**
  * A tool for crafting items in the Artifacts MMO game world.
@@ -34,9 +34,9 @@ The tool requires a recipe code and accepts optional quantity and character name
     quantity: z.number().default(1).describe(
       "The quantity to craft (default: 1)",
     ),
-    character: commonSchemaParams.character
+    character: commonSchemaParams.character,
   },
   async ({ code, quantity, character }) => {
     return await craft(code, quantity, character);
-  }
+  },
 );

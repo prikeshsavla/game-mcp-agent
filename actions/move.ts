@@ -14,7 +14,7 @@ import { handleAction } from "../utils/actions/actionHandler.ts";
  * - Returns the API response or error.
  * @see {@link https://docs.artifactsmmo.com/}
  */
-async function move(x = 0, y = 0, character = "Dexter") {  
+async function move(x = 0, y = 0, character = "Dexter") {
   return await handleAction("move", character, { x, y });
 }
 

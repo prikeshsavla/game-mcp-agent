@@ -17,17 +17,24 @@ async function chainMethods(calls: MethodCall[]) {
     const { description, method } = calls[i];
     console.log(`Calling #${i + 1}/${calls.length}: ${description}`);
     const result = await method();
-    console.log("Result:", result);
 
     const waitSeconds = result?.cooldown?.total_seconds ?? 0;
     if (i < calls.length - 1) {
       console.log(
-        `Next method ( #${i + 2}/${calls.length}) will be called in ${waitSeconds} seconds.`,
+        `Next method ( #${
+          i + 2
+        }/${calls.length}) will be called in ${waitSeconds} seconds.`,
       );
       if (waitSeconds > 0) {
         await sleep(waitSeconds * 1000);
       }
     } else {
+      // console.log(
+      //   `Finishing Cooldown in ${waitSeconds} seconds.`,
+      // );
+      if (waitSeconds > 0) {
+        await sleep(waitSeconds * 1000);
+      }
       return result;
     }
   }

@@ -6,13 +6,13 @@ import session from "../../utils/session.ts";
  * @param characterName - The name of the character to retrieve information for.
  * @returns A promise that resolves to the character details or an error object.
  */
-async function getCharacter(character: string = "Dexter") {
+async function getInventoryItem(item, character: string = "Dexter") {
   try {
     const data = await session.getApi(`/characters/${character}`);
-    return data;
+    return (data.inventory.find(b => b.code == item));
   } catch (error) {
     return { error };
   }
 }
 
-export default getCharacter;
+export default getInventoryItem;

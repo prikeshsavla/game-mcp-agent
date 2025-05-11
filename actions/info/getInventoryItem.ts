@@ -9,7 +9,7 @@ import session from "../../utils/session.ts";
 async function getInventoryItem(item, character: string = "Dexter") {
   try {
     const data = await session.getApi(`/characters/${character}`);
-    return (data.inventory.find(b => b.code == item));
+    return (data.inventory.find((b) => b.code == item));
   } catch (error) {
     return { error };
   }

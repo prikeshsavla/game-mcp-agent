@@ -34,6 +34,7 @@ export {
   getBankItems,
   getCharacter,
   getCharacterLogs,
+  getInventoryItem,
   getMaps,
   getMyCharacters,
   loopAction,
@@ -41,7 +42,6 @@ export {
   rest,
   unequip,
   useItem,
-  getInventoryItem
 };
 
 // for (let i = 0; i < 30; i++) {
@@ -59,7 +59,6 @@ export {
 //       }
 //     },
 // ])
-
 
 // await chainMethods(array);
 // for (let i = 0; i < 1; i++) {
@@ -144,7 +143,6 @@ export {
 //     { description: "Fight", method: () => loopAction(6, "fight") },
 //     { description: "Rest", method: () => rest() },
 
-
 //     { description: "Fight", method: () => loopAction(6, "fight") },
 //     { description: "Rest", method: () => rest() },
 //     { description: "Fight", method: () => loopAction(6, "fight") },
@@ -165,7 +163,6 @@ export {
 //     { description: "", method: () => craft("ash_plank", 7) }
 // ])
 
-
 // for (let i = 0; i < 3; i++) {
 //   await chainMethods([
 //     { description: "Mobr", method: () => move(2, 0) },
@@ -179,9 +176,6 @@ export {
 //     },
 //   ]);
 // }
-
-
-
 
 // for (let i = 0; i < 5; i++) {
 //   await chainMethods([
@@ -199,7 +193,6 @@ export {
 //   ]);
 // }
 
-
 // console.log(await craft("cooked_chicken", 5));
 // { description: "Rest", method: () => useItem("cooked_chicken", 2) },
 // { description: "Fight", method: () => loopAction(5, 'fight') },
@@ -214,4 +207,3 @@ export {
 // { description: "Moving to forge", method: () => move(1, 5) },
 // { description: "Crafting copper", method: () => craft("copper", 2) },
 // { description: "Move to Copper Rocks", method: () => move(2, 0) },
-
